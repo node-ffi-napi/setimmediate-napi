@@ -32,6 +32,8 @@ In your `binding.gyp`:
 In your C++ code:
 
 ```c++
+#include <setimmediate.h>
+
 int a = 10;
 SetImmediate(env, [a]() {
   /* do something with a ... */
