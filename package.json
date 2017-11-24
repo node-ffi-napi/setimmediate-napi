@@ -8,7 +8,7 @@
     "c++",
     "napi"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/node-ffi-napi/setimmediate-napi.git"
@@ -17,7 +17,7 @@
   "scripts": {
     "test": "reverse-test weak-napi"
   },
-  "devDependencies": {
+  "dependencies": {
     "get-uv-event-loop-napi-h": "^1.0.0"
   },
   "devDependencies": {

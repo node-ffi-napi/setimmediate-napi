@@ -14,12 +14,14 @@ void SetImmediate(napi_env env, T&& cb) {
     // uv_check_t + uv_idle_t is what Node.js itself does.
     uv_check_t check;
     uv_idle_t idle;
+    napi_env env;
   };
 
-  uv_loop_t* loop = napi__get_uv_event_loop(env);
+  uv_loop_t* loop = get_uv_event_loop(env);
   SetImmediateData* data = new SetImmediateData(std::move(cb));
   data->check.data = static_cast<void*>(data);
   data->idle.data = static_cast<void*>(data);
+  data->env = env;
 
   uv_check_init(loop, &data->check);
   uv_idle_init(loop, &data->idle);
@@ -37,7 +39,7 @@ void SetImmediate(napi_env env, T&& cb) {
       });
     });
 
-    Napi::HandleScope scope(env);
+    Napi::HandleScope scope(data->env);
 
     try {
       cb();
