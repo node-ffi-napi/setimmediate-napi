@@ -2,6 +2,8 @@ setimmediate-napi
 =================
 ### `setImmediate()` for N-API code
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/node-ffi-napi/setimmediate-napi.svg)](https://greenkeeper.io/)
+
 [![NPM Version](https://img.shields.io/npm/v/setimmediate-napi.svg?style=flat)](https://npmjs.org/package/setimmediate-napi)
 [![NPM Downloads](https://img.shields.io/npm/dm/setimmediate-napi.svg?style=flat)](https://npmjs.org/package/setimmediate-napi)
 [![Build Status](https://travis-ci.org/node-ffi-napi/setimmediate-napi.svg?style=flat&branch=master)](https://travis-ci.org/node-ffi-napi/setimmediate-napi?branch=master)
