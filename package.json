@@ -18,7 +18,7 @@
     "test": "reverse-test weak-napi"
   },
   "dependencies": {
-    "get-uv-event-loop-napi-h": "^1.0.2"
+    "get-uv-event-loop-napi-h": "^1.0.5"
   },
   "devDependencies": {
     "reverse-test": "^1.1.0"
