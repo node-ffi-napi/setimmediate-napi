@@ -81,7 +81,7 @@ void SetImmediate(napi_env env, T&& cb) {
 
     try {
       cb();
-    } catch (Napi::Error e) {
+    } catch (Napi::Error& e) {
       // This is going to crash, but it's not like we really have a choice.
       e.ThrowAsJavaScriptException();
     }
