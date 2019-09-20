@@ -7,6 +7,10 @@
 #include <memory>
 #include <get-uv-event-loop-napi.h>
 
+#if !defined(NAPI_VERSION) || NAPI_VERSION < 2
+#include <get-symbol-from-current-process.h>
+#endif
+
 static void* __setimmediate_napi_get_data_default(const uv_handle_t* handle) {
   return *reinterpret_cast<void* const*>(handle);
 }
@@ -25,10 +29,15 @@ void SetImmediate(napi_env env, T&& cb) {
 
   if (get_data == nullptr) {
     if (uv_version() >= 0x011300) {
+#if !defined(NAPI_VERSION) || NAPI_VERSION < 2
       get_data = reinterpret_cast<__get_data>(
           get_symbol_from_current_process("uv_handle_get_data"));
       set_data = reinterpret_cast<__set_data>(
           get_symbol_from_current_process("uv_handle_set_data"));
+#else
+      get_data = reinterpret_cast<__get_data>(&uv_handle_get_data);
+      set_data = reinterpret_cast<__set_data>(&uv_handle_set_data);
+#endif
     }
     if (get_data == nullptr) {
       get_data = __setimmediate_napi_get_data_default;
