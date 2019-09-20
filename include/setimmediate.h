@@ -5,6 +5,7 @@
 #include <uv.h>
 #include <stdlib.h>
 #include <memory>
+#include <get-symbol-from-current-process.h>
 #include <get-uv-event-loop-napi.h>
 
 static void* __setimmediate_napi_get_data_default(const uv_handle_t* handle) {
